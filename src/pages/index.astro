@@ -4,8 +4,12 @@ import Layout from '../layouts/Layout.astro';
 const currentTime = new Date().toLocaleTimeString();
 Astro.response.headers.set('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=10');
 
+const res = await fetch("https://randomuser.me/api/")
+const data = await res.json()
 ---
 
 <Layout>
   {currentTime}
+  <br/>
+  {JSON.stringify(data.results[0].name.first)}
 </Layout>
