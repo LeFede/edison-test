@@ -1,0 +1,17 @@
+---
+import { wait } from '@volpe/utils';
+import Layout from '../layouts/Layout.astro';
+
+const currentTime = new Date().toLocaleTimeString();
+Astro.response.headers.set('Cache-Control', 'public, s-maxage=20, stale-while-revalidate=20');
+
+const res = await fetch("https://randomuser.me/api/")
+const data = await res.json()
+await wait(6)
+
+---
+
+<h1>defer</h1>
+{currentTime}
+<br/>
+{JSON.stringify(data.results[0].name.first)}
