@@ -21,11 +21,9 @@ const api_qa = axios.create({
 let res2;
 let course1 
 
-try {
   res2 = await api_qa.get(`/courses/market/2a748937-dfff-419c-908e-fa16856e19fe`)
 
   course1 = res2.data[0]
-} catch (err) {} 
 
 const {picture} = course1.users[0].user
 
