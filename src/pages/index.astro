@@ -2,6 +2,7 @@
 import { wait } from '@volpe/utils';
 import Layout from '../layouts/Layout.astro';
 import TestDefer from '../components/TestDefer.astro';
+import A from '../components/A.astro';
 
 const currentTime = new Date().toLocaleTimeString();
 // Astro.response.headers.set('Cache-Control', 'public, s-maxage=30, stale-while-revalidate=30');
@@ -16,7 +17,11 @@ const currentTime = new Date().toLocaleTimeString();
   {currentTime}
   <br/>
   <!-- {JSON.stringify(data.results[0].name.first)} -->
-  <TestDefer server:defer>
+  <A server:defer>
     <p slot="fallback">cargando...</p>
-  </TestDefer>
+  </A>
 </Layout>
+
+  <!-- <TestDefer server:defer> -->
+  <!--   <p slot="fallback">cargando...</p> -->
+  <!-- </TestDefer> -->
